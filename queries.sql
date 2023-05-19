@@ -4,3 +4,9 @@ INSERT INTO cars_for_sale(dealership_id, price, make, model, `year`) VALUES(1, 2
 SELECT make, model, `year` from cars_for_sale ORDER BY `year` DESC;
 SELECT name, location from dealership d ORDER BY date_established ASC LIMIT 1;
 SELECT cfs.make, cfs.model, cfs.`year`, d.name, d.location from cars_for_sale cfs INNER JOIN dealership d ON cfs.dealership_id = d.id WHERE cfs.`year` > 2020 ORDER BY cfs.`year` ASC;
+
+SELECT COUNT(id) from cars_for_sale cfs where cfs.`year` = 2019;
+SELECT COUNT(cfs.id), d.date_established from dealership d INNER JOIN cars_for_sale cfs ON d.id = cfs.dealership_id GROUP BY d.id ORDER BY date_established DESC LIMIT 1;
+SELECT COUNT(id) from cars_for_sale cfs GROUP BY dealership_id;
+SELECT COUNT(id) from cars_for_sale cfs GROUP BY dealership_id HAVING COUNT(id) > 6;
+SELECT COUNT(id) from cars_for_sale cfs where cfs.`year` > 2020 GROUP BY dealership_id HAVING COUNT(id) > 5;
