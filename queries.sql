@@ -10,3 +10,5 @@ SELECT COUNT(cfs.id), d.date_established from dealership d INNER JOIN cars_for_s
 SELECT COUNT(id) from cars_for_sale cfs GROUP BY dealership_id;
 SELECT COUNT(id) from cars_for_sale cfs GROUP BY dealership_id HAVING COUNT(id) > 6;
 SELECT COUNT(id) from cars_for_sale cfs where cfs.`year` > 2020 GROUP BY dealership_id HAVING COUNT(id) > 5;
+SELECT COUNT(id) from cars_for_sale cfs where cfs.`year` > 2020 AND cfs.model LIKE ('%x%') GROUP BY dealership_id HAVING COUNT(id) > 5;
+SELECT AVG(price) from cars_for_sale cfs GROUP BY dealership_id HAVING SUM(price) > 100000;
